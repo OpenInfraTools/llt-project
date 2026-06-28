@@ -8,8 +8,13 @@ CFLAGS = -Wall -Wextra -O2 -fPIC
 
 MODULES = core tools
 
-INCLUDES := $(foreach m,$(MODULES),-I$(m)/include)
-SRCS := $(shell find $(MODULES) -type f -name "*.c" -not -path "*/test/*")
+SRCS := $(shell find $(MODULES) -type f -name "*.c" | sort)
+HEADERS := $(shell find $(MODULES) -type f -name "*.h" | sort)
+
+INCLUDES := \
+  -Icore/include \
+  -Icore/include/ir \
+  -Itools/include
 
 UNAME_S := $(shell uname -s)
 UNAME_M := $(shell uname -m)

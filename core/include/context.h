@@ -2,6 +2,9 @@
 #ifndef CONTEXT
 #define CONTEXT
 
+#include <stddef.h>
+
+#include "arena.h"
 #include "type.h"
 
 typedef struct context Context;
